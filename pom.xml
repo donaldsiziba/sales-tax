@@ -1,0 +1,117 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>sales.tax.exercise</groupId>
+    <artifactId>sales-tax</artifactId>
+    <version>1.1.0-SNAPSHOT</version>
+
+    <name>Sales Tax Exercise</name>
+
+    <properties>
+        <sonar.pitest.mode>active</sonar.pitest.mode>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <target>1.8</target>
+                    <source>1.8</source>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>sales.tax.exercise.Shop</mainClass>
+                            <arguments>
+                                <argument>1 book at 12.49,1 music CD at 14.99,1 chocolate bar at 0.85</argument>
+                                <argument>1 imported box of chocolates at 10.00,1 imported bottle of perfume at 47.50</argument>
+                                <argument>1 imported bottle of perfume at 27.99,1 bottle of perfume at 18.99,1 packet of headache pills at 9.75,1 box of imported chocolates at 11.25</argument>
+                                <argument>2 music CDs at 14.99</argument>
+                                <argument>10 music CDs at 14.99</argument>
+                                <argument>50 music CDs at 14.99</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>1.4</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.7.4.201502262128</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.1.10</version>
+                <configuration>
+                    <targetClasses>
+                        <param>sales.tax.exercise.domain.*</param>
+                        <param>sales.tax.exercise.utilities*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>sales.tax.exercise*</param>
+                    </targetTests>
+                    <outputFormats>
+                        <outputFormat>XML</outputFormat>
+                        <outputFormat>HTML</outputFormat>
+                    </outputFormats>
+                    <avoidCallsTo>
+                        <avoidCallsTo>java.io</avoidCallsTo>
+                    </avoidCallsTo>
+                    <timestampedReports>false</timestampedReports>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>mutation-coverage</id>
+                        <goals>
+                            <goal>mutationCoverage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-core</artifactId>
+            <version>1.0-groovy-2.4</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

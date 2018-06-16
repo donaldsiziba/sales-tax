@@ -43,6 +43,8 @@ Output 3: <br/>
 <b> Sales Taxes: 6.70 </b> <br/>
 <strong> Total: 74.68 </strong>
 
+>Note: For information on how to run the build, refer to the _Build.md_ file
+
 # Solution
 Normal developer instinct would dictate that you straight away write the implementation without the test case, but that is not the way how **Test Driven Development** (TDD) works...
 

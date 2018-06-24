@@ -106,9 +106,7 @@ class ShoppingBasketTestCase extends Specification {
 
         when: 'the items are added to the basket and checked out'
             final basket = new ShoppingBasket()
-            for (item in items) {
-                basket.addPurchaseItem(item)
-            }
+            items.each { item -> basket.addPurchaseItem(item) }
 
         then: 'there should be three purchase items in the basket'
             basket.purchaseItems.size() == items.size()

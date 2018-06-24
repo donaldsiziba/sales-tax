@@ -37,11 +37,10 @@ public class ShoppingBasket {
     public List<String> checkout() {
         List<String> values = new ArrayList<>();
 
-        for (PurchaseItem item : purchaseItems) {
-            final String lineItem = String.format("%s %s: %s", item.getQuantity(), item.getProduct().getDescription(), item.getPriceAfterTax());
+        purchaseItems.stream().map(item -> String.format("%s %s: %s", item.getQuantity(), item.getProduct().getDescription(), item.getPriceAfterTax())).forEach(lineItem -> {
             values.add(lineItem);
             System.out.println(lineItem);
-        }
+        });
         final String taxLine = String.format("Sales Taxes: %s", getTotalTax());
         values.add(taxLine);
         System.out.println(taxLine);

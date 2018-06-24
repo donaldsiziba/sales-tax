@@ -17,10 +17,11 @@ public class Shop {
     private static void shop(String[] items) {
         ShoppingBasket basket = new ShoppingBasket();
         System.out.println("Input:");
-        Arrays.stream(items).forEach(item -> {
-            System.out.println(item);
-            basket.addPurchaseItem(item);
-        });
+        Arrays.stream(items)
+                .forEach(item -> {
+                    System.out.println(item);
+                    basket.addPurchaseItem(item);
+                });
         System.out.println("\nOutput:" );
         basket.checkout();
         System.out.println("\n");

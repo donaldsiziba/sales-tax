@@ -71,7 +71,7 @@ Before we even start any coding, I recommend we look at the requirements and try
     <td>1 book at 12.49</td>
     <td>12.49</td>
     <td>0.00</td>
-    <td><span style="color:orange">Item exempt from Sales Tax</span></td>
+    <td><font color="#EB984E">Item exempt from Sales Tax</font></td>
   </tr>
   <tr>
     <td>1 music at 14.99</td>

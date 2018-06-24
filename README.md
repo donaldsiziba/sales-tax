@@ -71,7 +71,7 @@ Before we even start any coding, I recommend we look at the requirements and try
     <td>1 book at 12.49</td>
     <td>12.49</td>
     <td>0.00</td>
-    <td><font color="#EB984E">Item exempt from Sales Tax</font></td>
+    <td><span style="color:orange">Item exempt from Sales Tax</span></td>
   </tr>
   <tr>
     <td>1 music at 14.99</td>
@@ -154,4 +154,3 @@ Before we start with the test cases, lets do a preliminary domain design.
 
 ## Domain Model
 ![Sale Tax Domain Model](./src/test/resources/images/sales-tax-domain-model.png)
-

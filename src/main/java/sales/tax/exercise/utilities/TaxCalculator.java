@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 public class TaxCalculator {
     private final BigDecimal salesTaxRate = new BigDecimal("0.10");
     private final BigDecimal importDutyRate = new BigDecimal("0.05");
+    private final RoundingRule roundingRule = new RoundingRule();
 
     private BigDecimal salesTax = new BigDecimal("0.00");
     private BigDecimal importDuty = new BigDecimal("0.00");
@@ -32,6 +33,6 @@ public class TaxCalculator {
             importDuty = price.multiply(importDutyRate);
         }
 
-        return new RoundingRule(salesTax).roundUp().add(new RoundingRule(importDuty).roundUp());
+        return roundingRule.apply(salesTax).add(roundingRule.apply(importDuty));
     }
 }
